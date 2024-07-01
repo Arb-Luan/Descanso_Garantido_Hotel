@@ -14,20 +14,21 @@
 *
 *
 * NOTES :
-* These functions are a part of the FM suite;
-* See IMS FM0121 for detailed description.
+* Sistema de controle e cadastro de clientes funcional e dinâmica
+* Não utilizamos Funções dentro do código principal, apenas nas classes
 *
-* Copyright A.N.Other Co. 1990, 1995. All rights reserved.
-*
-* AUTHOR : Arthur Other START DATE : 16 Jan 99
+* AUTHOR(s) : 
+*    LUAN HENRIQUE GOIANA de MELO
+*    LAMÔNI LEAL PEREIRA
+*Other START DATE : 17 de JUN de 2024
 *
 * CHANGES :
-*
-* REF NO VERSION DATE WHO DETAIL
-* F21/33 A.03.04 22Jan99 JR Function CalcHuffman corrected
-*
+* 17Jun2024 - Inicializando contrução do código e das classes
+* 25Jun2024 - Continuando contrução das classes
+* 26Jun2024 - Finalizando código de classes
+* 28Jun2024 - Contruindo Menu e procedimentos do código
+* 30Jun2024 - Finalizando código, reparando erros e documentando código
 *H*/
-
 
 #include <iostream>
 #include <limits>

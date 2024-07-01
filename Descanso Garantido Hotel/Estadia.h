@@ -4,15 +4,20 @@
 #include <iostream>
 #include <cstdio>
 #include <cstring>
-/* classe Estadia
-Representa uma estadia,
-serve para gerenciar as
-informações de uma estadia
-
+/* 
+* NAME: Client.h
+* DESCRIPTION: Classe para objetos do tipo cliente herdando atributos da classe Pessoa
+* PROCESS: 
+*    [1]    Gerando variÃ¡veis para armazenar informaÃ§Ãµes
+*    [2]    Gera cÃ³digo ID para cada estadia ou reserva criada
+*    [4]    Grava dados em arquivos binÃ¡rios
+* NOTES:
+*     Estadia Ã© a classe que Ã© vinculada em procedimentos a todos os outros objetos 
 */
 class Estadia
 {
 private:
+        //VariÃ¡veis para guardar dados e informaÃ§Ãµes da estadia
     std::string codigoEstadia;
     std::string dataEntrada;
     std::string dataSaida;
@@ -21,7 +26,7 @@ private:
     static int estadiaCounter;
 
 public:
-    Estadia()//construtor padrão
+    Estadia()//construtor padrÃ£o
     {
         codigoEstadia = "";
         dataEntrada = "";
@@ -39,7 +44,7 @@ public:
     {
         this->dataEntrada = data;
     }
-//Define a data de saída
+//Define a data de saÃ­da
     void setDataSaida(const std::string &data)
     {
         this->dataSaida = data;
@@ -49,37 +54,37 @@ public:
     {
         this->quantidadeDiarias = dias;
     }
-//Define o código do cliente
+//Define o cÃ³digo do cliente
     void setCodigoCliente(const std::string &codigo)
     {
         this->codigoCliente = codigo;
     }
-//Obtém o código da Estadia
+//ObtÃ©m o cÃ³digo da Estadia
     std::string getCodigoEstadia() const
     {
         return codigoEstadia;
     }
-//Obtém a data de entrada
+//ObtÃ©m a data de entrada
     std::string getDataEntrada() const
     {
         return dataEntrada;
     }
-//Obtém a data de saída
+//ObtÃ©m a data de saÃ­da
     std::string getDataSaida() const
     {
         return dataSaida;
     }
-//Obtém a quantidade de diárias
+//ObtÃ©m a quantidade de diÃ¡rias
     int getQuantidadeDiarias() const
     {
         return quantidadeDiarias;
     }
-//Obtém o código do cliente
+//ObtÃ©m o cÃ³digo do cliente
     std::string getCodigoCliente() const
     {
         return codigoCliente;
     }
-//Gera o código da estadia
+//Gera o cÃ³digo da estadia
     void generateCodigoEstadia()
     {
         codigoEstadia = "EST" + std::to_string(++estadiaCounter);
@@ -87,13 +92,14 @@ public:
 //Salva os dados da estadia no arquivo
     void saveToFile(const std::string &filename)
     {
+        //Abrindo arquivo para leitura e alteraÃ§Ã£o 
         FILE *outFile = fopen(filename.c_str(), "ab");
         if (!outFile)
         {
             std::cerr << "Erro ao abrir o arquivo para escrita." << std::endl;
             return;
         }
-
+        //Anexando dados ao arquivo ja existente
         writeString(outFile, codigoEstadia);
         writeString(outFile, dataEntrada);
         writeString(outFile, dataSaida);

@@ -172,7 +172,7 @@ private:
         fwrite(&length, sizeof(length), 1, file);
         fwrite(str.c_str(), sizeof(char), length, file);
     }
-
+//Lê as strings no arquivo binário
     std::string readString(FILE *file)
     {
         size_t length;

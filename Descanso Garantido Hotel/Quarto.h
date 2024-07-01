@@ -4,9 +4,14 @@
 #include <iostream>
 #include <cstdio>
 #include <string>
-/*classe Quarto
-Representa um quarto, com seus atributos n˙mero, quantidade de hÛspedes
-valor da di·ria e se est· ou n„o ocupado
+/*
+* NAME: Pessoa.h
+* DESCRIPTION: uperclasse do sistema tendo atributos gerais para pessoa (Cliente ou Funcion√°rio)
+* PROCESS: 
+*    [1]    Gerando vari√°veis para armazenar informa√ß√µes
+*    [2]    Gerando c√≥digo individual ID para cada quarto
+*    [3]    Valores das di√°rias  quantidade de h√≥spedes
+*    [4]    Verifica√ß√£o de lota√ß√£o do quarto selecionado
 */
 class Quarto
 {
@@ -20,7 +25,7 @@ private:
 public:
     Quarto()//Construtor parametrizado(ou personalizado)
         : numeroQuarto(""), quantidadeHospedes(0), valorDiaria(0.0), ocupado(false), codigoEstadia("") {}
-//define o n˙mero do quarto
+//define o n√∫mero do quarto
     void setNumeroQuarto(const std::string& num)
     {
         this->numeroQuarto = num;
@@ -30,38 +35,38 @@ public:
     {
         this->quantidadeHospedes = hospedes;
     }
-//Define o Valor da di·ria
+//Define o Valor da di√°ria
     void setValorDiaria(double valor)
     {
         this->valorDiaria = valor;
     }
-//Define se est· ocupado ou n„o
+//Define se est√° ocupado ou n√£o
     void setOcupado(bool estado)
     {
         this->ocupado = estado;
     }
-//Define o cÛdigo da estadia
+//Define o c√≥digo da estadia
     void setCodigoEstadia(const std::string& cod)
     {
         this->codigoEstadia = cod;
-        ocupado = !cod.empty(); // Se h· cÛdigo de estadia, o quarto est· ocupado
+        ocupado = !cod.empty(); // Se h√° c√≥digo de estadia, o quarto est√° ocupado
     }
 
     std::string getNumeroQuarto() const
     {
         return numeroQuarto;
     }
-//ObtÈm a quantidade de hÛspedes
+//Obt√©m a quantidade de h√≥spedes
     int getQuantidadeHospedes() const
     {
         return quantidadeHospedes;
     }
-//ObtÈm o valor da Di·ria
+//Obt√©m o valor da Di√°ria
     double getValorDiaria() const
     {
         return valorDiaria;
     }
-//ObtÈm o status se est· ocupado ou n„o
+//Obt√©m o status se est√° ocupado ou n√£o
     bool getOcupado() const
     {
         return ocupado;
@@ -71,7 +76,7 @@ public:
     {
         return codigoEstadia;
     }
-//Salva os dado no quarto no arquivo bin·rio
+//Salva os dado no quarto no arquivo bin√°rio
     void saveToFile(const std::string& filename)
     {
         FILE* outFile = fopen(filename.c_str(), "ab");
@@ -80,7 +85,7 @@ public:
             std::cerr << "Erro ao abrir o arquivo para escrita." << std::endl;
             return;
         }
-
+            //gravando os dados dentro do arquivo bin√°rio
         writeString(outFile, numeroQuarto);
         fwrite(&quantidadeHospedes, sizeof(quantidadeHospedes), 1, outFile);
         fwrite(&valorDiaria, sizeof(valorDiaria), 1, outFile);
@@ -90,9 +95,10 @@ public:
         fclose(outFile);
         std::cout << "Dados do quarto salvos com sucesso no arquivo " << filename << std::endl;
     }
-//LÍ os dados do quarto em um arquivo bin·rio
+//L√™ os dados do quarto em um arquivo bin√°rio
     void readFromFile(const std::string& filename)
     {
+            //Abrindo o arquivo para Leitura
         FILE* inFile = fopen(filename.c_str(), "rb");
         if (!inFile)
         {
@@ -102,6 +108,7 @@ public:
 
         while (!feof(inFile))
         {
+                //Lendo dados dentro do arquivo
             numeroQuarto = readString(inFile);
             fread(&quantidadeHospedes, sizeof(quantidadeHospedes), 1, inFile);
             fread(&valorDiaria, sizeof(valorDiaria), 1, inFile);
@@ -113,14 +120,14 @@ public:
     }
 
 private:
-    //Escreve os dados no arquivo bin·rio
+    //Escreve os dados no arquivo bin√°rio
     void writeString(FILE* file, const std::string& str)
     {
         size_t length = str.size();
         fwrite(&length, sizeof(length), 1, file);
         fwrite(str.c_str(), sizeof(char), length, file);
     }
-//L  os dados do quarto do arquivo bin·rio
+//L√ä os dados do quarto do arquivo bin√°rio
     std::string readString(FILE* file)
     {
         size_t length;

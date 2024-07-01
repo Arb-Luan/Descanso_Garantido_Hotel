@@ -3,13 +3,15 @@
 
 #include <iostream>
 #include <string>
-#include <stdexcept>  // Necess·rio para std::invalid_argument
-#include <limits>     // Necess·rio para std::numeric_limits
-/*classe Pessoa
-Essa classe  representa os dados de uma pessoa.
-… a superclasse do sistema tendo atributos de idade
-e nome
-
+#include <stdexcept>  // Necess√°rio para std::invalid_argument
+#include <limits>     // Necess√°rio para std::numeric_limits
+/
+* NAME: Pessoa.h
+* DESCRIPTION: uperclasse do sistema tendo atributos gerais para pessoa (Cliente ou Funcion√°rio)
+* PROCESS: 
+*    [1]    Gerando vari√°veis para armazenar informa√ß√µes
+*    [2]    Construtor padr√£o para verificar idades v√°lidas
+*    [3]    Grava dados de nome e idade no sistema
 */
 class Pessoa
 {
@@ -17,7 +19,7 @@ private:
     std::string nome;
     int idade;
 
-public://consturor padr„o
+public://consturor padr√£o
     Pessoa()
     {
         nome = "Sem nome";
@@ -33,25 +35,25 @@ public://consturor padr„o
     {
         if (a < 0 || a < 18)
         {
-            throw std::invalid_argument("Idade inv·lida. Deve ser maior ou igual a 18.");
+            throw std::invalid_argument("Idade inv√°lida. Deve ser maior ou igual a 18.");
         }
         this->idade = a;
     }
-//ObtÈm o nome
+//Obt√©m o nome
     std::string getNome()
     {
         return nome;
     }
-//obtÈm a idade
+//obt√©m a idade
     int getAge()
     {
         return idade;  // Corrigido: retornar 'idade' em vez de 'age'
     }
-    //MÈtodo que obtÈm e define os dados do objeto pessoa
+    //M√©todo que obt√©m e define os dados do objeto pessoa
     void cadastrarC()
     {
         std::cout << "Digite o nome da pessoa:" << std::endl;
-        std::getline(std::cin >> std::ws, nome);  // std::ws ignora espaÁos em branco iniciais
+        std::getline(std::cin >> std::ws, nome);  // std::ws ignora espa√ßos em branco iniciais
 
         bool ageValid = false;
         while (!ageValid)

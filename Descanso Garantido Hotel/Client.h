@@ -6,11 +6,13 @@
 #include <string>
 #include "Pessoa.h"
 /*
-classe Client:
-Representa um cliente, herdando atributos da classe Pessoa,
-Ela gerencia as informações dos clientes, como a geração do código, endereço,
-contato, pontos de fidelidade e funcionalidades para manipulação de arquivo
-binário
+* NAME: Client.h
+* DESCRIPTION: Classe para objetos do tipo cliente herdando atributos da classe Pessoa
+* PROCESS: 
+*    [1]    Gerando variÃ¡veis para armazenar informaÃ§Ãµes
+*    [2]    Gera cÃ³digo ID para cada Cliente
+*    [3]    Calcula e soma pontos de Fidelidade para cada cliente(em estadia)
+*    [4]    Grava dados em arquivos binÃ¡rios
 */
 class Client : public Pessoa
 {
@@ -22,19 +24,19 @@ private:
     static int clientCounter;
 
 public:
-    Client()//Construtor padrão
+    Client()//Construtor padrÃ£o
     {
         code = "";
         address = "";
         contact = "";
         pontosFidelidade = 0;
     }
-//Define  o código do cliente
+//Define  o cÃ³digo do cliente
     void setCode(const std::string &c)
     {
         this->code = c;
     }
-//Define o endereço do cliente
+//Define o endereÃ§o do cliente
     void setAddress(const std::string &a)
     {
         this->address = a;
@@ -44,22 +46,22 @@ public:
     {
         this->contact = c;
     }
-//Obtém o código do cliente
+//ObtÃ©m o cÃ³digo do cliente
     std::string getCode() const
     {
         return code;
     }
-//Obtém o endereço do cliente
+//ObtÃ©m o endereÃ§o do cliente
     std::string getAddress() const
     {
         return address;
     }
-//Obtém o contato do cliente
+//ObtÃ©m o contato do cliente
     std::string getContact() const
     {
         return contact;
     }
-//Obtém o numero dos pontos de fidelidade
+//ObtÃ©m o numero dos pontos de fidelidade
     int getPontosFidelidade() const
     {
         return pontosFidelidade;
@@ -69,13 +71,13 @@ public:
     {
         pontosFidelidade += pontos;
     }
-//Gera o código de Cliente
+//Gera o cÃ³digo de Cliente
     void generateClientCode()
     {
         clientCounter++;
         code = "CL" + std::to_string(clientCounter);
     }
-//Salva os dados do cliente num arquivo binário
+//Salva os dados do cliente num arquivo binÃ¡rio
     void saveToFile(const std::string &filename)
     {
         FILE *outFile = fopen(filename.c_str(), "ab");
@@ -102,7 +104,7 @@ public:
         cadastrarC();
         generateClientCode();
 
-        std::cout << "Digite o endereço do cliente: ";
+        std::cout << "Digite o endereÃ§o do cliente: ";
         std::getline(std::cin, address);
 
         std::cout << "Digite o contato do cliente: ";
@@ -110,7 +112,7 @@ public:
 
         std::cout << "\nCadastro de cliente realizado com sucesso!" << std::endl;
     }
-//Lê os dados do cliente em um arquivo
+//LÃª os dados do cliente em um arquivo
     void readFromFile(const std::string &filename)
     {
         FILE *inFile = fopen(filename.c_str(), "rb");
@@ -145,25 +147,25 @@ public:
 
         fclose(inFile);
     }
-//mostra as informações de um cliente
+//mostra as informaÃ§Ãµes de um cliente
     void showInfo()
     {
-        std::cout << "Informações do Cliente:" << std::endl;
-        std::cout << "Nome: " << getNome() << std::endl;
-        std::cout << "Idade: " << getAge() << std::endl;
-        std::cout << "Código: " << code << std::endl;
-        std::cout << "Endereço: " << address << std::endl;
-        std::cout << "Contato: " << contact << std::endl;
-        std::cout << "Pontos de Fidelidade: " << pontosFidelidade << std::endl;
+        std::cout << "\nInformaÃ§Ãµes do Cliente:" << std::endl;
+        std::cout << "\nNome: " << getNome() << std::endl;
+        std::cout << "\nIdade: " << getAge() << std::endl;
+        std::cout << "\nCÃ³digo: " << code << std::endl;
+        std::cout << "\nEndereÃ§o: " << address << std::endl;
+        std::cout << "\nContato: " << contact << std::endl;
+        std::cout << "nPontos de Fidelidade: " << pontosFidelidade << std::endl;
     }
-//Procura um cliente com base no critério inserido
+//Procura um cliente com base no critÃ©rio inserido
     bool searchClient(const std::string &searchTerm)
     {
         return (code == searchTerm || getNome() == searchTerm);
     }
 
 private:
-    //Escreve no arquivo
+    //Escreve no arquivo salvando os dados em cÃ³digo binÃ¡rio
     void writeString(FILE *file, const std::string &str)
     {
         size_t length = str.size();

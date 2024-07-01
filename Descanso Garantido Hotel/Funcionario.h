@@ -5,30 +5,34 @@
 #include <fstream>
 #include <string>
 #include <sstream>
-#include <limits>    // Necess·rio para std::numeric_limits
+#include <limits>    // Necess√°rio para std::numeric_limits
 #include "Pessoa.h"
-/*classe funcionario
-Representa um funcion·rio, herda atributos da classe pessoa.
-Ela gerencia as informaÁıes dos funcion·rios,como sal·rio,
-matrÌcula e cargo
-
+/*
+* NAME: Funcionario.h
+* DESCRIPTION: Classe para objetos do tipo funcion√°rio herdando atributos da classe Pessoa
+* PROCESS: 
+*    [1]    Gerando vari√°veis para armazenar informa√ß√µes (nome, endere√ßo, c√≥digo ou matr√≠cula, idade e cargo)
+*    [2]    Gera c√≥digo ID para cada Funcion√°rio
+*    [3]    Grava dados em arquivos bin√°rios
+*    [4]    Controle de sal√°rio, alterando e salvando dados do sal√°rio
 */
 class Funcionario : public Pessoa
 {
 private:
+        //vari√°veis para armazenamento dos dados
     std::string matricula;
     std::string cargo;
     double salario;
     static int employeeCounter;
 
 public:
-    Funcionario()
+    Funcionario() //construtor padr√£o
     {
         matricula = "";
         cargo = "";
         salario = 0.0;
     }
-//Define a matrÌcula do funcion·rio
+//Define a matr√≠cula do funcion√°rio
     void setMatricula(const std::string &m)
     {
         this->matricula = m;
@@ -43,29 +47,29 @@ public:
     {
         this->salario = s;
     }
-//ObtÈm a matrÌcula do funcion·rio
+//Obt√©m a matr√≠cula do funcion√°rio
     std::string getMatricula() const
     {
         return matricula;
     }
-//ObtÈm o cargo do funcionario
+//Obt√©m o cargo do funcionario
     std::string getCargo() const
     {
         return cargo;
     }
-//ObtÈm o o sal·rio do funcion·rio
+//Obt√©m o o sal√°rio do funcion√°rio
     double getSalario() const
     {
         return salario;
     }
-//Gera a matrÌcula do funcion·rio
+//Gera a matr√≠cula do funcion√°rio
     void generateEmployeeMatricula()
     {
         std::ostringstream oss;
         oss << "EMP" << ++employeeCounter;
         matricula = oss.str();
     }
-//Salva no arquivo os dados em um arquivo bin·rio
+//Salva no arquivo os dados em um arquivo bin√°rio
     void saveToFile(const std::string &filename)
     {
         std::ofstream outFile(filename, std::ios::binary | std::ios::app);
@@ -85,48 +89,49 @@ public:
         outFile.close();
         std::cout << "Dados salvos com sucesso no arquivo " << filename << std::endl;
     }
-//Cadastra os dados do funcion·rio
+//Cadastra os dados do funcion√°rio
     void cadastrarFuncionario()
     {
         cadastrarC();
         generateEmployeeMatricula();
-
-        std::cout << "Digite o cargo do funcion·rio: ";
+            //Solicitando dados para o usu√°rio
+        std::cout << "Digite o cargo do funcion√°rio: ";
         std::getline(std::cin, cargo);
 
-        std::cout << "Digite o sal·rio do funcion·rio: ";
+        std::cout << "Digite o sal√°rio do funcion√°rio: ";
         std::cin >> salario;
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');  // Limpa o buffer de entrada
 
-        std::cout << "\nCadastro de funcion·rio realizado com sucesso!" << std::endl;
+        std::cout << "\nCadastro de funcion√°rio realizado com sucesso!" << std::endl;
     }
-//Exibe as informaÁıes do funcion·rio
+//Exibe as informa√ß√µes do funcion√°rio
     void exibirInformacoes()
     {
-        std::cout << "MatrÌcula: " << matricula << std::endl;
+        //imprimindo informa√ß√µes do funcion√°rio, caso de pesquisa
+        std::cout << "Matr√≠cula: " << matricula << std::endl;
         std::cout << "Nome: " << getNome() << std::endl;
         std::cout << "Idade: " << getAge() << std::endl;
         std::cout << "Cargo: " << cargo << std::endl;
-        std::cout << "Sal·rio: " << salario << std::endl;
+        std::cout << "Sal√°rio: " << salario << std::endl;
     }
-//Procura o funcion·rio com base na matrÌcula
+//Procura o funcion√°rio com base na matr√≠cula
     bool searchFuncionario(const std::string &matriculaToFind)
     {
         return (matricula == matriculaToFind);
     }
-//Exibe as informaÁıes do funcion·rio
+//Exibe as informa√ß√µes do funcion√°rio
     void showInfo()
     {
-        std::cout << "InformaÁıes do Funcion·rio:" << std::endl;
-        std::cout << "MatrÌcula: " << matricula << std::endl;
+        std::cout << "Informa√ß√µes do Funcion√°rio:" << std::endl;
+        std::cout << "Matr√≠cula: " << matricula << std::endl;
         std::cout << "Nome: " << getNome() << std::endl;
         std::cout << "Idade: " << getAge() << std::endl;
         std::cout << "Cargo: " << cargo << std::endl;
-        std::cout << "Sal·rio: " << salario << std::endl;
+        std::cout << "Sal√°rio: " << salario << std::endl;
     }
 
 private:
-    //Escreve as informaÁıes do funcion·rio no arquvio
+    //Escreve as informa√ß√µes do funcion√°rio no arquvio
     void writeString(std::ofstream &outFile, const std::string &str)
     {
         size_t length = str.size();
@@ -135,7 +140,7 @@ private:
     }
 };
 
-// InicializaÁ„o do contador est·tico
+// Inicializa√ß√£o do contador est√°tico
 int Funcionario::employeeCounter = 0;
 
 #endif // FUNCIONARIO_H_INCLUDED

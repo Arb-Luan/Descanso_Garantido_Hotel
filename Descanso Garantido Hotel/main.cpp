@@ -99,14 +99,14 @@ int main()
 void menu()
 {
             //Impressão de um menu escrito e descritivo para o usuário, expecificando opções de escolha.
-    std::cout << "Bem Vindo ao Descanso Garantido Hotel\n" << std::endl;
-    std::cout << "--------------------------------------\n" << std::endl;
-    std::cout << "Opção 1 - Cadastrar Cliente\n" << std::endl;
-    std::cout << "Opção 2 - Cadastrar Funcionario\n" << std::endl;
-    std::cout << "Opção 3 - Registrar diaria\n" << std::endl;
-    std::cout << "Opção 4 - Pesquisar Cliente\n" << std::endl;
-    std::cout << "Opção 5 - Pesquisar Funcionario\n" << std::endl;
-    std::cout << "Opção 0 - Sair\n\n" << std::endl;
+    std::cout << "Bem Vindo ao Descanso Garantido Hotel" << std::endl;
+    std::cout << "--------------------------------------" << std::endl;
+    std::cout << "Opção 1 - Cadastrar Cliente" << std::endl;
+    std::cout << "Opção 2 - Cadastrar Funcionario" << std::endl;
+    std::cout << "Opção 3 - Registrar diaria" << std::endl;
+    std::cout << "Opção 4 - Pesquisar Cliente" << std::endl;
+    std::cout << "Opção 5 - Pesquisar Funcionario" << std::endl;
+    std::cout << "Opção 0 - Sair\n" << std::endl;
     std::cout << "--------------------------------------" << std::endl;
 }
 

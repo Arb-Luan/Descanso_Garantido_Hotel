@@ -61,7 +61,7 @@ int main()
     do
     {
         menu();            //Procedimento de impressão das opções de menu
-        std::cout << "Inserir opção: ";        //Solicitando ao usuário
+        std::cout << "Inserir opcao: ";        //Solicitando ao usuário
         std::cin >> opt;
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Limpa o buffer de entrada
 
@@ -99,14 +99,14 @@ int main()
 void menu()
 {
             //Impressão de um menu escrito e descritivo para o usuário, expecificando opções de escolha.
-    std::cout << "Bem Vindo ao Descanso Garantido Hotel\n" << std::endl;
-    std::cout << "--------------------------------------\n" << std::endl;
-    std::cout << "Opção 1 - Cadastrar Cliente\n" << std::endl;
-    std::cout << "Opção 2 - Cadastrar Funcionário\n" << std::endl;
-    std::cout << "Opção 3 - Registrar diária\n" << std::endl;
-    std::cout << "Opção 4 - Pesquisar Cliente\n" << std::endl;
-    std::cout << "Opção 5 - Pesquisar Funcionário\n" << std::endl;
-    std::cout << "Opção 0 - Sair\n\n" << std::endl;
+    std::cout << "Bem Vindo ao Descanso Garantido Hotel" << std::endl;
+    std::cout << "--------------------------------------" << std::endl;
+    std::cout << "Opção 1 - Cadastrar Cliente" << std::endl;
+    std::cout << "Opção 2 - Cadastrar Funcionario" << std::endl;
+    std::cout << "Opção 3 - Registrar diaria" << std::endl;
+    std::cout << "Opção 4 - Pesquisar Cliente" << std::endl;
+    std::cout << "Opção 5 - Pesquisar Funcionario" << std::endl;
+    std::cout << "Opção 0 - Sair\n" << std::endl;
     std::cout << "--------------------------------------" << std::endl;
 }
 

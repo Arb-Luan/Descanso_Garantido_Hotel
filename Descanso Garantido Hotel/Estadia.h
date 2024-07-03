@@ -89,6 +89,10 @@ public:
     {
         codigoEstadia = "EST" + std::to_string(++estadiaCounter);
     }
+~Estadia()
+{
+        std::cout<<"Baixa na estadia registrada com sucesso!\n";
+}
 //Salva os dados da estadia no arquivo
     void saveToFile(const std::string &filename)
     {

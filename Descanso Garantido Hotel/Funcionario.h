@@ -120,7 +120,11 @@ public:
         return (matricula == matriculaToFind);
     }
 //Exibe as informações do funcionário
-    void showInfo()
+~FUncionario()
+{
+        std::cout<<"Funcionario demitido com sucesso!\n";
+}
+void showInfo()
     {
         std::cout << "Informações do Funcionário:" << std::endl;
         std::cout << "Matrícula: " << matricula << std::endl;

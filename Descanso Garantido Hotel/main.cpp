@@ -19,7 +19,6 @@
 *
 * AUTHOR(s) : 
 *    LUAN HENRIQUE GOIANA de MELO
-*    LAMÔNI LEAL PEREIRA
 *Other START DATE : 17 de JUN de 2024
 *
 * CHANGES :
